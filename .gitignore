@@ -1,7 +1,6 @@
 .vscode
 .vscode/**
 .vscode/*
-medsmartcom/settings.py
 env
 env/**
 env/*
