@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load humanize %}
+{% block styles %}
+    <link href="{% static "css/goods_detail.css" %}" rel="stylesheet"/>
+{% endblock %}
+{% block title %}
+    Информация о товаре
+{% endblock %}
+<p>
+{% block breadcrumbs%}
+    {{ block.super }}
+    {% for anc in ancestors %}
+        {% ifequal anc None %}
+            <a class="breadcrumb" href="{% url "goods"%}"> / Каталог товаров </a>
+        {% else %}
+            <a class="breadcrumb" href="{% url "goods" pk=anc.pk%}">/ {{ anc.name }} </a>
+        {% endifequal %}
+    {% endfor %}
+    <a class="breadcrumb"  href="{% url "goods" pk=object.category.pk%}"> / {{ object.category.name }}</a>
+    <span class="breadcrumb"  href="{% url "goods_detail" pk=object.pk%}"> / {{ object.name }}</span>
+{% endblock %}
+</p>
+{% block content %}
+    <h1>{{ object.name }}</h1>
+    {% if perms.goods.edit_good %}
+        <section id="permissions_section">
+            <p>
+                <a href="{% url "goods_edit" pk=object.pk %}">
+                    + Редактировать товар
+                </a>
+            </p>
+        </section>
+    {% endif %}
+    <section id="specification_section">
+        <div id="manufacturer" class="specification">
+            <p class="spec_name">
+                Производитель:&nbsp;
+            </p>
+            <p class="spec_value">
+                {{ object.manufacturer }}
+            </p>
+        </div>
+        <div id="reg_number" class="specification">
+            <p class="spec_name">
+                Регистрация:&nbsp;
+            </p>
+            <p class="spec_value">
+                {% ifnotequal object.reg_number None %}
+                    {{ object.reg_number }}
+                {% else %}
+                    отсутствует
+                {% endifnotequal %}
+            </p>
+        </div>
+        <div id="reg_exp_date" class="specification">
+            <p class="spec_name">
+                Дата окончания:&nbsp;
+            </p>
+            <p class="spec_value">
+                {% ifnotequal object.reg_exp_date None %}
+                    {{ object.reg_exp_date }}
+                {% else %}
+                    отсутствует
+                {% endifnotequal %}
+            </p>
+        </div>
+        <div class="specification">
+            <img src = "{{ MEDIA_URL }}{{ object.image }}"/>
+        </div>
+    </section>
+    <section id="content_section">
+        <p>
+            Описание:
+        </p>
+        <div id="content">
+            <br/>
+            {{ object.content|safe }}
+        </div>
+    </section>
+    <p class="go_back_label">
+        <a href="{% url "goods" pk=object.category.pk %}?page={{ pn }}">&lt;&nbsp;Назад</a>
+    </p>
+    <script>
+        function clearOutStyles(elem){
+            var tags = (!elem) ? document.getElementById('content').childNodes : elem.childNodes;
+            for(var i = 0; i < tags.length; i++)
+                if (tags[i].style)
+                    tags[i].removeAttribute('style');
+            for(var i = 0; i < tags.length; i++)
+                if (tags[i] instanceof HTMLElement)
+                    clearOutStyles(tags[i]);
+        };
+        clearOutStyles();
+    </script>
+{% endblock %}

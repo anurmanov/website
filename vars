@@ -1,0 +1,2 @@
+[Service]
+Environment="PATH=/var/www/medsmartcom/bin:/usr/local/bin/:/usr/bin"

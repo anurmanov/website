@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block styles %}
+    <link href="{% static "css/mainpage.css" %}" rel="stylesheet"/>
+{% endblock %}
+{% block title %}
+Главная страница
+{% endblock %}
+{% block header %}
+    <div id="slider-wrapper">
+        <div id="slider">
+            <img id="loading_slider_img" src="{% static "images/slider/slider_placeholder.jpg"%}" alt="loading..."/>
+            <div class="slide">
+                <img/>
+                <h2>Профилактика</h2>
+                <!--[if IE ]>
+                <h2 class="for_ie">Профилактика</h2>
+                <![endif]-->
+            </div>
+            <div class="slide">
+                <img/>
+                <h2>Скрининг</h2>
+                <!--[if IE]>
+                <h2 class="for_ie">Скрининг</h2>
+                <![endif]-->
+            </div>
+            <div class="slide">
+                <img/>
+                <h2>Диагностика</h2>
+                <!--[if IE]>
+                <h2 class="for_ie">Диагностика</h2>
+                <![endif]-->
+            </div>
+            <div class="slide">
+                <img/>
+                <h2>Технологии</h2>
+                <!--[if IE]>
+                <h2 class="for_ie">Технологии</h2>
+                <![endif]-->
+            </div>
+            <div class="slide">
+                <img/>
+                <h2>Забота</h2>
+                <!--[if IE]>
+                <h2 class="for_ie">Забота</h2>
+                <![endif]-->
+            </div>
+        </div>
+        <div id="left_arrow" class="slider_nav_button invisible">
+            <img src="{% static "images/icon-slider-arrow-left-grey.svg"  %}"/>
+        </div>
+        <div id="right_arrow" class="slider_nav_button invisible">
+            <img src="{% static "images/icon-slider-arrow-right-grey.svg"  %}"/>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <br/>
+    <div id="featured_goods">
+        <h3>Рекомендуемые товары</h3>
+        {% for good in featured_goods %}
+            <div class="featured_good">
+                <a href="{{ good.get_absolute_url }}">
+                    <img src="{{ MEDIA_URL }}{{ good.image }}" alt=""/>
+                </a>
+                <a href="{{ good.get_absolute_url }}">
+                    {{ good.name }}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static "js/mainpage.js"%}"></script>
+{% endblock %}

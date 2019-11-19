@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}
+Контакты
+{% endblock %}
+{% block styles %}
+<link href="{% static "css/contacts.css" %}" rel="stylesheet"/>
+{% endblock %}
+{% block breadcrumbs %}
+    {{ block.super }} / <a class="breadcrumb" href="{% url "contacts" %}">Контакты</a>
+{% endblock %}
+{% block content %}
+    {% if companyInfo %}
+        <section class="companyInfo_section">
+        {% for info in companyInfo %}
+            <article class="companyInfo_item">
+                <div class="name">{{ info.name }}</div>
+                <div class="value">{{ info.value|safe }}</div>
+            </article>
+        {% endfor %}
+        </section>
+    {% endif %}
+{% endblock %}

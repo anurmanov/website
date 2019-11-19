@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static "css/good_edit.css" %}"/>
+{% endblock %}
+{% block title %}
+    {{ form_caption }}
+{% endblock %}
+{% block media %}
+    {{ form.media }}
+{% endblock %}
+<p>
+{% block breadcrumbs %}
+    {{ block.super }}&gt;
+    {% for anc in ancestors %}
+        {% ifequal anc None %}
+            <a class="breadcrumb" href="{% url "goods"%}">Каталог товаров </a>
+        {% else %}
+            &gt;&nbsp;<a class="breadcrumb" href="{% url "goods" pk=anc.pk%}">{{ anc.name }}</a>
+        {% endifequal %}
+    {% endfor %}
+    {% ifnotequal category None %}
+        &gt;&nbsp;<a class="breadcrumb" href="{% url "goods" pk=category.pk%}">{{ category.name }}</a>
+    {% endifnotequal %}
+{% endblock %}
+</p>
+{% block content %}
+    <h1>{{ header_caption }}</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% include "generic/form.html" %}
+        <div class="submit-button">
+            <input type="submit" value="{{ submit_button_caption }}">
+        </div>
+        <div class="submit-button">
+            <input type="button" value="Отмена" src="{% url "goods" pk=category.pk%}">
+        </div>
+    </form>
+    <p>
+        <a href="{% url "goods" pk=category.pk %}?page={{ pn }}">&lt;Назад</a>
+    </p>
+{% endblock %}

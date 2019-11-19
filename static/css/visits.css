@@ -1,0 +1,23 @@
+#statistic_pages{
+    width: 100%;
+    margin: 5px 0 10px 0;
+    font-size: larger;
+}
+#statistic_pages::before{
+    content: 'Type of statistics: ';
+    font-weight: bold;
+}
+#statistics_of_visits span{
+    display: block;
+}
+section > span {
+    margin: 10px 0;
+    font-size: larger;
+    font-weight: bold;
+}
+.filter > span {
+    margin: 15px 0 5px 0;
+}
+.filter > span::before {
+    content: 'Filters: ';
+}

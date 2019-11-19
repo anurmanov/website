@@ -1,0 +1,7 @@
+medsmartcom:sessions:3f5922ba-79a9-489d-a124-c9215e715e16
+visits:/
+new_session =False
+new_visit_on_page =False
+pipeline.exists(session_key) =1
+new_session =False
+new_visit_on_page =False

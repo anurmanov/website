@@ -1,0 +1,28 @@
+.search_results{
+    margin: 0;
+    margin-left: 10%;
+}
+.result_item{
+    margin: 2vh 0;
+    white-space: nowrap;
+}
+.result_item > *{
+    vertical-align: top;
+    display: inline-block;
+    margin-right: 1rem;
+}
+.item {
+    width: 70%;
+    border-bottom: 1px solid #009ff0;
+}
+.item > * {
+    display: block;
+    text-align: left;
+    padding-bottom: 1rem;
+    white-space: normal;
+}
+.result_item .description:hover::after{
+    content: "...подробнее";
+    color: #009ff0;
+}
+

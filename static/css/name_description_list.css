@@ -1,0 +1,39 @@
+.list{
+    list-style: none;
+}
+.item{
+    display: block;
+    position: relative;
+    width: 70%;
+    border-bottom: 1px solid #555c66;
+}
+.name_container{
+    width: 100%;
+    vertical-align: center;
+    white-space: nowrap;
+}
+.item img {
+    display: inline-block;
+    min-width: 32px;
+    width: 32px;
+    position: relative;
+    padding: auto 0;
+    vertical-align: middle;
+}
+.item .name{
+    display: inline-block;
+    white-space: normal;
+    vertical-align: middle;
+    font-size: larger;
+}
+.item .description{
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    margin: 0;
+    overflow: hidden;
+    height: auto;
+    transition: height .5s ease;
+    white-space: normal;
+    text-wrap: normal;
+}

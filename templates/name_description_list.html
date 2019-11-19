@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block styles %}
+    <link href="{% static "css/name_description_list.css" %}" rel="stylesheet"/>
+{% endblock %}
+{% block title %}
+{{ page_title }}
+{% endblock %}
+{% block breadcrumbs %}
+    {{ block.super }} / <a class="breadcrumb" href="{% url "services" %}">{{ page_title }}</a>
+{% endblock %}
+{% block content %}
+    <p>{{ list_header }}</p>
+    <ul class="list">
+    {% for item in object_list %}
+        <li class="item">
+            <div class="name_container">
+                <img src="{% static "images/expand_list_icon.svg"%}">
+                <p class="name">{{ item.name }}</p>
+            </div>
+            <p class="description">{{ item.description|safe }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

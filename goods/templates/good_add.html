@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+Добавить товар
+{% endblock %}
+{% block content %}
+    <h2>Добавление товара в каталог</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% include "generic/form.html" %}
+        <div class="submit-button"><input type="submit" value="Добавить"></div>
+    </form>
+    <p>
+        <a href="{% url "goods" pk=category.pk %}?page={{ pn }}">Назад</a>
+    </p>
+{% endblock %}

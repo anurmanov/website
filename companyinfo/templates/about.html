@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}
+О компании
+{% endblock %}
+{% block breadcrumbs %}
+    {{ block.super }} / <a class="breadcrumb" href="{% url "companyinfo" %}">О компании</a>
+{% endblock %}
+{% block content %}
+    <section class="company_info">
+    {% if about %}
+        {{ about.value|safe }}
+    {% else %}
+        <p>Не заполнена информация о компании.</p>
+    {% endif %}
+    </section>
+{% endblock %}

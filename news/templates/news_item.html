@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}
+{{ object.name }}
+{% endblock %}
+{% block breadcrumbs %}
+    {{ block.super }}&gt;&nbsp;<a class="breadcrumb"  href="{% url "news" %}?page={{ pn }}">Новости</a>
+    &gt;&nbsp;<a class="breadcrumb"  href="{% url "news_detail" pk=object.pk %}">{{ object.name }}</a>
+{% endblock %}
+{% block content %}
+    <h1>{{ object.name }}</h1>
+    <p>{{ object.content|safe }}</p>
+    <a href="{% url "news" %}?page={{ pn }}">&lt;Назад</a>
+    <br/>
+    <br/>
+{% endblock %}

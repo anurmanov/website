@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block styles %}
+    <link href="{% static "css/mainpage.css" %}" rel="stylesheet"/>
+{% endblock %}
+{% block title %}
+Админка
+{% endblock %}
+{% block content %}
+    <iframe id="admin_frame" src="/admin"></iframe>
+{% endblock %}
+{% block scripts %}
+<script>
+    function resizeFrame(){
+        let frm = document.getElementById('admin_frame');
+        frm.style.height = frm.contentDocument.body.clientHeight + 'px';
+    };
+    setInterval(resizeFrame, 300);
+</script>
+{% endblock %}

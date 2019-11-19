@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block styles %}
+<link href="{% static "css/goods.css" %}" rel="stylesheet"/>
+{% endblock %}
+{% block title %}
+Каталог товаров
+{% endblock %}
+<p>
+{% block breadcrumbs %}
+    {{ block.super }}
+        {% for anc in ancestors %}
+            {% ifequal anc None %}
+                {% ifnotequal category None %}
+                    <a class="breadcrumb" href="{% url "goods"%}"> / Каталог товаров </a>
+                {% else %}
+                    <span class="breadcrumb" href="{% url "goods"%}"> / Каталог товаров </span>
+                {% endifnotequal %}
+            {% else %}
+                <a class="breadcrumb" href="{% url "goods" pk=anc.pk%}">/ {{ anc.name }} </a>
+            {% endifequal %}
+        {% endfor %}
+        {% ifnotequal category None %}
+            <span class="breadcrumb" href="{% url "goods" pk=category.pk%}"> / {{ category.name }}</span>
+        {% endifnotequal %}
+{% endblock %}
+</p>
+{% block content %}
+    <section id="subgroups_section">
+        {% if subgroups %}
+            {% for subgroup in subgroups %}
+                <article class="subgroup_item">
+                    <a href="{{ subgroup.get_absolute_url }}">
+                        {% if subgroup.image %}
+                            <img src="{{ MEDIA_URL }}{{ subgroup.image }}" class="item_img" alt=""/>
+                        {% else %}
+                            <img src="/media/categories/images/4f035e72-d85f-4e20-8906-ee5818209ce5_catalog.png" class="item_img" alt=""/>
+                        {% endif %}
+                    </a>
+                    <a href="{{ subgroup.get_absolute_url }}" class="item_caption">
+                        {{ subgroup.name }}
+                    </a>
+                </article>
+            {% endfor %}
+        {% endif %}
+    </section>
+    <section id="goods_section">
+        {% if category %}
+            {% if perms.goods.add_good %}
+                <article id="good_permissions">
+                    <p>
+                        <a href="{% url "goods_add" pk=category.pk %}">
+                            + Добавить товар
+                        </a>
+                    </p>
+                </article>
+            {% endif %}
+            {% if goods %}
+                {% for good in goods %}
+                    <article class="good_item">
+                        <a href="{{ good.get_absolute_url }}">
+                            <img src="{{ MEDIA_URL }}{{ good.image }}" class="item_img" alt=""/>
+                        </a>
+                        <a href="{{ good.get_absolute_url }}" class="item_caption">
+                            {{ good.name}}, {{  good.manufacturer }}
+                        </a>
+                    </article>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+    </section>
+    <br/>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static "js/goods.js"%}"></script>
+{% endblock %}

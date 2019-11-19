@@ -1,0 +1,15 @@
+.companyInfo_section{
+    width: 90%;
+}
+.companyInfo_item {
+    /*white-space: nowrap;*/
+    word-wrap: normal;
+    /*margin-bottom: 1rem;*/
+}
+.companyInfo_item > * {
+    display: inline-block;
+    text-align: left;
+}
+.name:after {
+    content: ': ';
+}

@@ -1,0 +1,133 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8"/>
+	    <meta name="viewport" content="width=device-width"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+        <meta http-equiv="Pragma" content="no-cache"/>
+        <link href="{% static "css/base.css" %}" rel="stylesheet"/>
+        <link href="{% static "css/fbb.css" %}" rel="stylesheet"/>
+        {% block styles %}
+        {% endblock %}
+        <script defer src="{% static "js/classlist.js" %}"></script>
+        <title>
+        {% block title %}
+        {% endblock %}
+        </title>
+        {% block media %}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <div id="header_panel">
+                <a class="logo_link" href="{% url "main" %}">
+                    <img src="{% static "images/logo_with_company_name_transparent.png"%}" alt="logo"/>
+                </a>
+                {% if user.is_authenticated %}
+                <a href="{% url "logout" %}">Выйти</a>
+                <span>{{user.username}}/</span>
+                {% else %}
+                <a href="{% url "login" %}">Вход на сайт</a>
+                {% endif %}
+            </div>
+            <nav id="nav_panel">
+                <img id="menu_button" class="cursor-pointer" src="{% static "images/menu_img.svg" %}"/>
+                <ul id="main_menu" class="nav_menu">
+                    <li class="MenuItem"><a href="{% url "main" %}">Главная</a></li>
+                    <li class="MenuItem"><a href="{% url "companyinfo" %}">О компании</a></li>
+                    <li class="MenuItem"><a href="{% url "goods" %}">Каталог</a></li>
+                    <li class="MenuItem"><a href="{% url "services" %}">Услуги</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="MenuItem"><a href="{% url "visits" %}">Статистика</a></li>
+                    <li class="MenuItem"><a href="{% url "adminka" %}">Админка</a></li>
+                    {% endif %}
+                    <li class="MenuItem"><a href="{% url "contacts" %}">Контакты</a></li>
+                    <li class="MenuItem nohover"><form method="get" action="{% url "search" %}"><input type="search" name="search_text" placeholder="Поиск..." size="30"/><input type="image" id="search_button" name="search_button" src="{% static "images/search_button_img.png" %}"/></form></li>
+                </ul>
+            </nav>
+            {% block header %}
+
+            {% endblock %}
+        </header>
+        <main>
+        <p class="breadcrumbs">
+        {% block breadcrumbs %}
+            <a class="breadcrumb" href="/">Главная</a>
+        {% endblock %}
+        </p>
+        {% block content %}
+        {% endblock %}
+        </main>
+        <footer>
+            <div class="footer_item" id="shrink_footer_panel">
+                <span class="cursor-pointer">
+                    <img src="{% static "images/arrow.svg" %}"/>
+                </span>
+            </div>
+            <div id="footer_panel" class="footer_item is-active">
+                <section>
+                    <div class="footer_panel_item">
+                        <p>Контакты</p>
+                        <div>
+                            <ul>
+                                <li>Адрес: {{ company_info.address|safe}}</li>
+                                <li>Телефон: {{ company_info.telephone|safe}}</li>
+                                <li>Email: {{ company_info.email|safe}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="footer_panel_item">
+                        <p>Быстрые ссылки</p>
+                        <div>
+                            <ul>
+                                <li><a href="{% url "companyinfo" %}">О компании</a></li>
+                                <li><a href="{% url "goods" %}">Каталог</a></li>
+                                <li><a href="{% url "services" %}">Услуги</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="footer_panel_item">
+                        <p>
+                            <a id="footer_logo" class="footer_panel_item logo_link" href="#header_panel">
+                                <img id="footer_logo_img" src="{% static "images/logo_with_company_name_transparent.png"%}"/>
+                            </a>
+                        </p>
+                        <div>
+                            <p>Все материалы сайта защищены авторским правом. Любое использование, либо копирование материалов, или подборки материалов сайта, элементов дизайна и оформления допускается лишь с разрешения правообладателя и только со ссылкой на источник: www.medicalsmartcompany.com»</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div id="copy_right_panel" class="footer_item">
+                <span >
+                    &copy;&nbsp;2018&nbsp;Medical Smart Company
+                </span>
+            </div>
+        </footer>
+        <div id="fade_panel">
+        </div>
+        <ul id="popup_menu" class="nav_menu invisible">
+            <li id="close_menu" class="MenuItem"><span class="cursor-pointer"><img src="{% static "images/cross.svg" %}"/></span></li>
+            <li class="MenuItem"><a href="{% url "main" %}">Главная</a></li>
+            <li class="MenuItem"><a href="{% url "companyinfo" %}">О компании</a></li>
+            <li class="MenuItem"><a href="{% url "goods" %}">Каталог</a></li>
+            <li class="MenuItem"><a href="{% url "services" %}">Услуги</a></li>
+            {% if user.is_authenticated %}
+            <li class="MenuItem"><a href="{% url "visits" %}">Статистика</a></li>
+            <li class="MenuItem"><a href="{% url "adminka" %}">Админка</a></li>
+            {% endif %}
+            <li class="MenuItem"><a href="{% url "contacts" %}">Контакты</a></li>
+        </ul>
+        <img id="scroll_to_top_btn" src="{% static "images/scrollToTop.png" %}" alt="Наверх страницы"/>
+        <script src="{% static "js/jquery-1.x.min.js"%}"></script>
+        <script src="{% static "js/base.js"%}"></script>
+        <script src="{% static "js/fbb.js" %}"></script>
+        {% block scripts %}
+        {% endblock %}
+    </body>
+</html>

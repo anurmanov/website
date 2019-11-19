@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block styles %}
+<link href="{% static "css/news.css" %}" rel="stylesheet"/>
+{% endblock %}
+{% block title %}
+Новости
+{% endblock %}
+{% block breadcrumbs %}
+{{ block.super }} &gt; <a class="breadcrumb" href="{% url "news" %}">Новости</a>
+{% endblock %}
+{% block content %}
+    {% if object_list %}
+        <section class="news_list">
+            {% for news_item in object_list %}
+                <article class="news_item">
+                    <p class="news_date">{{ news_item.date|date:"d.m.Y" }}</p>
+                    <p class="news_name" >
+                        <a href="{{ news_item.get_absolute_url }}?page={{ pn }}">{{ news_item.name }}</a>
+                    </p>
+                </article>
+            {% endfor %}
+        </section>
+        {% if is_paginated %}
+            {% include "generic/pagination.html" %}
+        {% endif %}
+    {% else %}
+        <p>Список новостей пуст.</p>
+    {% endif %}
+    <br/>
+{% endblock %}

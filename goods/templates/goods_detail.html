@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load humanize %}
+{% block styles %}
+    <link href="{% static "css/goods_detail.css" %}" rel="stylesheet"/>{% endblock %}
+{% block title %}
+    Информация о товаре
+{% endblock %}
+{% block content %}
+    <h1>Информация о товаре</h1>
+    <h2>{{ object.name }}</h2>
+    <section id="header_section">
+        <img src = "{{ MEDIA_URL }}{{ object.image }}"/>
+        <p id="manufacturer">
+            {{ object.manufacturer }}
+        </p>
+        <p id="price">
+            {{ object.price|floatformat:2|intcomma }}
+        </p>
+    </section>
+    <section id="content_section">
+        <p id="content">
+            <br/>
+            {{ object.content }}
+        </p>
+    </section>
+{% endblock %}

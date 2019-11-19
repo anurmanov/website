@@ -1,0 +1,24 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+{% block styles%}
+<link href = "{% static "css/visits.css" %}" rel="stylesheet"/>
+{% endblock %}
+{% block title %}
+Статистика посещений
+{% endblock %}
+{% block breadcrumbs %}
+{{block.super}}<span class="breadcrumb" href="{% url "goods"%}"> / Статистика посещений</span>
+{% endblock %}
+{% block content %}
+<div id="statistic_pages">
+</div>
+<div id="statistics_of_visits">
+    <section class="total">
+    </section>    
+    <section class="details">
+    </section>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static "js/visits.js" %}"></script>
+{% endblock %}

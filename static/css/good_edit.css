@@ -1,0 +1,32 @@
+.form-field {
+    width: 100%;
+    margin: 1vh 0;
+    padding: .5vh 0;
+    border-bottom: 1px #009ff0 solid;
+}
+.form-field > * {
+    display: inline-block;
+}
+.form-field > .error-list {
+    display: block;
+    color: red;
+    font-size: smaller;
+    font-weight: bold;
+    margin-bottom: 1vh;
+}
+.form-field > .label {
+    width: 25%;
+    vertical-align: top;
+}
+.form-field > .label:after {
+    content: ":";
+}
+.form-field > .control {
+    width: 73%;
+}
+.form-field > .control > *:not([type="checkbox"]) {
+    width: 100%;
+}
+.submit-button {
+    display: inline-block;
+}

@@ -1,0 +1,36 @@
+.service_list{
+    list-style: none;
+}
+.service span{
+  display: inline;
+}
+.service span:nth-child(1){
+    display: none;
+}
+.service span:nth-child(2){
+    display: inline;
+}
+.service span:nth-child(1).active{
+    display: inline-block;
+}
+.service span:nth-child(2).active{
+    display: none;
+}
+.service .name{
+    cursor: pointer;
+    display: inline-block;
+}
+.service .name.active:hover::after{
+    content: "...свернуть";
+    color: #009ff0;
+}
+.service .name:hover::after{
+    content: "...подробнее";
+    color: #009ff0;
+}
+.service > .description{
+    display: none;
+}
+.service > .description.active{
+    display: block;
+}

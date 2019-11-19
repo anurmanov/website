@@ -1,0 +1,152 @@
+.breadcrumbs{
+    display: none;
+}
+#slider-wrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 18.75vw;
+    clear: both;
+    margin: 0;
+}
+#loading_slider_img{
+    z-index: 0;
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: auto;
+}
+.slider_nav_button{
+    z-index: 2;
+    position: relative;
+    width: 5%;
+    height: auto;
+    float: left;
+    top: 25%;
+}
+.slider_nav_button > img{
+    position: relative;
+    width: 51%;
+    alignment: center;
+    margin: 0;
+}
+#left_arrow{
+    left: 5%;
+}
+#right_arrow{
+    left: 87.5%;
+}
+.slide {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.slide > img {
+    z-index: 0;
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+}
+.slide.visible {
+    display: block;
+    top: 0;
+}
+.slide.active {
+    display: block;
+    top: 0;
+}
+.slide.visible > img {
+    display: block;
+    top: 0%;
+}
+.slide.active > img {
+    display: block;
+    -webkit-transition: top 3s ease;
+    -moz-transition: top 3s ease;
+    -ms-transition: top 3s ease;
+    -o-transition: top 3s ease;
+    transition: top 3s ease;
+    top: -195%;
+}
+.slide > h2 {
+    display: block;
+    z-index: 2;
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-size: 4vw;
+    position: absolute;
+    top: 3vw;
+    left: 3vw;
+    text-shadow: .3vh .2vh black;
+}
+.slide > h2.for_ie {
+    z-index: 1;
+    color: black;
+    top: 3.2vw;
+    left: 3.2vw;
+}
+
+#featured_goods{
+    overflow: auto;
+    height: auto;
+    min-height: 30vw;
+    border-bottom: 1px solid grey;
+    padding: 2vw;
+}
+#featured_goods > h3 {
+    color: gray;
+    text-align: center;
+
+}
+.featured_good {
+    display: block;
+    /*margin: 2vh 0 2vh 1vw;*/
+    margin: 0;
+    margin-bottom: 5vh;
+    margin-left: 1vw;
+    float: left;
+    width: 17vw;
+    height: 17vw;
+}
+.featured_good a{
+    display: block;
+    font-size: 1rem;
+    margin: 1vh;
+    text-decoration: none;
+}
+.featured_good img {
+    max-width: 12vw;
+    max-height: 12vw;
+    margin: auto;
+    border: none;
+}
+
+@media handheld, screen and (max-width: 896px) {
+    .featured_good {
+        width: 27vw;
+        height: 27vw;
+    }
+    .featured_good img {
+        max-width: 22vw;
+        max-height: 22vw;
+    }
+}
+@media handheld, screen and (max-width: 560px) {
+    .featured_good {
+        width: 88vw;
+        height: 88vw;
+    }
+    .featured_good img {
+        max-width: 84vw;
+        max-height: 84vw;
+    }
+}
+
+

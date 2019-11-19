@@ -1,0 +1,32 @@
+.news_item {
+    white-space: nowrap;
+    padding: 0 1rem;
+    width: 90%;
+    /*border: 1px solid red;*/
+    font-size: larger;
+}
+.news_item > * {
+    text-align: left;
+    display: inline-block;
+}
+.news_date {
+    vertical-align: top;
+    font-style: italic;
+    color: #555c66;
+}
+.news_date:after {
+    content: ' - ';
+}
+.news_name {
+    width: 70%;
+    border-bottom: 1px solid white;
+    vertical-align: top;
+}
+.news_name:hover {
+    border-bottom: 1px solid #009ff0;
+}
+.news_name > * {
+    width: 100%;
+    white-space: normal;
+    vertical-align: top;
+}

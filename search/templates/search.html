@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load  staticfiles %}
+{% block title %}
+Результаты поиска
+{% endblock %}
+{% block styles %}
+<link href="{% static "css/search.css" %}" rel="stylesheet"/>
+{% endblock %}
+{% block breadcrumbs %}
+    {{ block.super }} &gt; <a class="breadcrumb" href="{% url "search" %}">Результаты поиска</a>{% endblock %}
+{% block content %}
+    <h2>Результаты поиска текста: {{ text }}</h2>
+    {% if text %}
+        {% if results %}
+            <section class="search_results">
+                {% for item in results %}
+                    <article class="result_item">
+                        <div class="item_number">{{ item.result_index }}.</div>
+                        <div class="item">
+                            <a href="{{ item.value.url }}" class="name">{{ item.value.name }}</a>
+                            <a href="{{ item.value.url }}" class="description">{{ item.value.description }}</a>
+                        </div>
+                    </article>
+                {% endfor %}
+            </section>
+            {% if is_paginated %}
+                {% include "generic/pagination.html" %}
+            {% endif %}
+        {% else %}
+            <p>Поиск не дал результатов.</p>
+        {% endif %}
+    {% else %}
+        <p>Поиск не дал результатов.</p>
+    {% endif %}
+{% endblock %}
