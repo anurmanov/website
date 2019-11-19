@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^visits/', include('visits.urls')),
     url(r'^login/', auth_views.LoginView.as_view(template_name = "login.html"), name = "login"),
     url(r'^logout/', auth_views.LogoutView.as_view(), name = "logout"),
-    url('^$', include('main.urls')),
+    url('', include('main.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

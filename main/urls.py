@@ -4,5 +4,5 @@ from main.views import MainPageView, getRandomSliderImages
 
 urlpatterns = [
     url('slider_images', getRandomSliderImages, name="slider_images"),
-    url('', never_cache(MainPageView.as_view()), name="main"),
+    url(r'^$', never_cache(MainPageView.as_view()), name="main"),
 ]
