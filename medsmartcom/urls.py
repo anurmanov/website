@@ -22,8 +22,8 @@ from django.contrib.auth import views as auth_views
 from main.views import AdminkaPageView
 
 urlpatterns = [
-    path('adminka/', AdminkaPageView.as_view(), name="adminka"),
-    path('admin', admin.site.urls),
+    url(r'^adminka/', AdminkaPageView.as_view(), name="adminka"),
+    url(r'^admin/', admin.site.urls),
     url(r'^goods/', include('goods.urls')),
     url(r'^services/', include('services.urls')),
     url(r'^news/', include('news.urls')),
@@ -31,8 +31,8 @@ urlpatterns = [
     url(r'^contacts/', include('contacts.urls')),
     url(r'^companyinfo/', include('companyinfo.urls')),
     url(r'^visits/', include('visits.urls')),
-    url(r'login/', auth_views.LoginView.as_view(template_name = "login.html"), name = "login"),
-    url(r'logout/', auth_views.LogoutView.as_view(), name = "logout"),
+    url(r'^login/', auth_views.LoginView.as_view(template_name = "login.html"), name = "login"),
+    url(r'^logout/', auth_views.LogoutView.as_view(), name = "logout"),
     url('^$', include('main.urls')),
 ]
 
