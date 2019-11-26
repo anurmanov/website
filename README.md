@@ -1,6 +1,11 @@
 # website
-Django project. Website for representing company's goods and services. 
-Has visit tracker module inside, sticky feedback js form. 
-Uses Redis server as cache and visit statistics info.
-Uses PostgeSQL database for looking up for country and city of the visiter based on its ip-address.
-This db is based on Geolite2 MaxMind public database.
+The Django project of the website for representing regular company and its goods and services.
+The Most interesting application of the project is a 'visits' application, because it is intended for tracking visits. 
+The project uses Redis server as cache and storage for statistics of visits. 
+The statistics is divided on different filters via managing redis key names and hash tables.
+
+There is fbb.js module for pop-up sticky feedback JS form in the static/js path. 
+All js modules are located in ./static/js path.
+
+Also the project uses the PostgeSQL database for searchin visister's country and city according to ip-address.
+This database is based on Geolite2 MaxMind public database. There is a script for moving info from Geolite2 MaxMind public database files to PostgreSQL database.
