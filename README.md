@@ -7,4 +7,4 @@ There is fbb.js module for pop-up sticky feedback JS form in the path ./static/j
 
 Also the project uses the PostgeSQL database for searchin visister's country and city according to ip-address. This database is based on Geolite2 MaxMind public database. There is a script for moving info from Geolite2 MaxMind public database files to PostgreSQL database.
 
-All potentialy long io-operations (redis, postgres, email) are implemented via Celery tasks. You can observe them in module ./visits/tasks.py
+All potentialy long io-operations (redis, postgres, email interactions) are implemented via Celery tasks. You can observe them in module ./visits/tasks.py
